@@ -1,0 +1,1253 @@
+14/09/22, 6:57 pm - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more.
+14/09/22, 6:57 pm - Arnab KIIT: <Media omitted>
+14/09/22, 8:46 pm - Abhrajit: <Media omitted>
+16/09/22, 7:06 pm - Your security code with Arnab KIIT changed. Tap to learn more.
+03/11/22, 10:23 pm - Arnab KIIT: #include<stdio.h>
+#include<stdlib.h>
+
+struct BST{
+   char data;
+   struct BST *left;
+   struct BST *right;
+};
+
+
+struct BST *insert(struct BST *root,char key) {
+      if(root == NULL) {
+         struct BST *curr = malloc(sizeof(struct BST));
+         curr -> data = key;
+         curr -> right = curr -> left = NULL;
+         root = curr;
+         return root; 
+       }
+  
+      if(key == root -> data) {
+        return root;
+      }
+
+      if(key > root -> data) {
+        root -> right = insert(root -> right,key);
+        return root;
+      }
+
+      root->left = insert(root -> left,key);
+      return root;
+}
+
+void preorder(struct BST *root) {
+     if(root == NULL) {
+       return;
+     }
+
+     printf("%c ",root -> data);
+     preorder(root -> left);
+     preorder(root -> right);
+}
+
+void inorder(struct BST *root) {
+     if(root == NULL) {
+       return;
+     }
+
+     inorder(root -> left);
+     printf("%c ",root -> data);
+     inorder(root -> right);
+}
+
+void postorder(struct BST *root) {
+   if(root == NULL) {
+       return;
+     }
+
+     postorder(root -> left);
+     postorder(root -> right);
+     printf("%c ",root -> data);
+}
+
+/*
+int main() {
+  struct BST *root = NULL;
+  char str[100];
+  printf("ENTER THE STRING : ");
+  
+  scanf("%s",str);
+
+  int i;
+  for(i = 0; str[i] ; i++ ) {
+     char key = str[i];
+     root = insert(root,key);
+  }
+
+  printf("\n");
+
+  preorder(root);
+  printf("\n");
+
+  inorder(root);
+  printf("\n");
+
+  postorder(root);
+  printf("\n");
+  
+
+ return 0;
+}
+*/
+03/11/22, 10:23 pm - Arnab KIIT: struct Node{
+     struct BST *adrs;
+     struct Node *next;
+};
+
+struct Queue{
+   struct Node *front;
+   struct Node *rear;
+};
+
+void enqueue(struct Queue **q,struct BST *adr) {
+       struct Node *curr = malloc(sizeof(struct Node));
+       curr -> adrs = adr;
+       curr -> next = NULL;
+
+       if((*q) -> front == NULL) {
+          (*q) -> front = curr;
+          (*q) -> rear  = curr;
+          return;
+       }
+
+       (*q) -> rear -> next = curr;
+       (*q) -> rear  = curr;
+       
+}
+
+struct BST* dequeue(struct Queue **q) {
+      if((*q) -> front == NULL) {
+        return NULL;
+      }
+
+     struct BST *adrs = (*q) -> front -> adrs;
+     struct Node *temp = (*q) -> front;
+     (*q) -> front = (*q) -> front -> next;
+     free(temp);
+     return adrs; 
+}
+
+int isEmpty(struct Queue *q) {
+   if(q -> front == NULL) {
+     return 1;
+   }
+
+   return 0;
+}
+03/11/22, 10:23 pm - Arnab KIIT: #include"q1.c"
+#include"queue.h"
+
+void levelOrderTraversal(struct BST *root) {
+       if(!root) {
+         return;
+       }
+ 
+       struct Queue *q1 = malloc(sizeof(struct Queue));
+       q1 -> front = q1 -> rear = NULL;
+       
+       enqueue(&q1,root);
+
+       while(!isEmpty(q1)) {
+        struct BST *adrs = dequeue(&q1);
+        printf("%c ",adrs -> data);
+        if(adrs -> left)
+         enqueue(&q1,adrs -> left);
+        if(adrs -> right)
+         enqueue(&q1,adrs -> right);
+       }
+      
+}
+
+int MAX(int a ,int b) {
+  return a > b ? a:b;
+}
+
+int findHeight(struct BST *root) {
+    if(!root) {
+     return 0;
+    }
+
+   int rightHeight = findHeight(root -> right);
+   int leftHeight = findHeight(root -> left);
+   
+   return 1 + MAX(rightHeight,leftHeight);
+}
+
+int main() {
+  struct BST *root = NULL;
+  char str[100];
+  printf("ENTER THE STRING : ");
+  
+  scanf("%s",str);
+
+  int i;
+  for(i = 0; str[i] ; i++ ) {
+     char key = str[i];
+     root = insert(root,key);
+  }
+
+  printf("\nPREORDER (RECURSIVE)  : ");
+  preorder(root);
+
+  printf("\nINORDER (RECURSIVE)   : ");
+  inorder(root);
+
+  printf("\nPOSTORDER (RECURSIVE) : ");
+  postorder(root);
+
+  printf("\nLEVEL ORDER TRAVERSAL : ");
+  levelOrderTraversal(root);
+
+  printf("\nHEIGHT OF THE TREE : %d",findHeight(root));
+  
+
+ return 0;
+}
+05/11/22, 12:35 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:39 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:41 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:41 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:42 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:42 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:42 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:43 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:43 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:43 pm - Arnab KIIT: Ps selected questions
+26/11/22, 11:44 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:44 pm - Arnab KIIT: <Media omitted>
+26/11/22, 11:44 pm - Arnab KIIT: DMS er important question textbook er exercise wise
+27/11/22, 12:00 am - Abhrajit: Thnx bhai
+29/11/22, 7:16 pm - Abhrajit: <Media omitted>
+09/12/22, 8:06 pm - Abhrajit: <Media omitted>
+09/12/22, 10:45 pm - Abhrajit: Mod 5 up counter er pic ta patha
+09/12/22, 11:18 pm - Arnab KIIT: <Media omitted>
+24/12/22, 11:19 pm - Abhrajit: Section niye ki bhabli?
+24/12/22, 11:30 pm - Arnab KIIT: Ami nebo toh Morning
+24/12/22, 11:30 pm - Arnab KIIT: Final Section akhn o decide korini re
+24/12/22, 11:33 pm - Abhrajit: Amio morning nebo
+24/12/22, 11:39 pm - Arnab KIIT: Sobai e morning nebe😂
+24/12/22, 11:43 pm - Abhrajit: <Media omitted>
+24/12/22, 11:43 pm - Arnab KIIT: Bara oidin luck favour korle
+24/12/22, 11:43 pm - Arnab KIIT: Tobe hobe
+24/12/22, 11:43 pm - Arnab KIIT: Sap crash korlei chude gelo
+24/12/22, 11:44 pm - Abhrajit: Setai bhai
+27/12/22, 1:07 pm - Arnab KIIT: Kire
+27/12/22, 1:07 pm - Arnab KIIT: Ki peli
+27/12/22, 1:08 pm - Arnab KIIT: Bol
+27/12/22, 1:08 pm - Arnab KIIT: Bara msg kor6isna mane morning peye ge6is naki??
+27/12/22, 1:11 pm - Abhrajit: CSE 32
+27/12/22, 1:12 pm - Abhrajit: Are bhai baire chilam ektu
+27/12/22, 1:12 pm - Abhrajit: Tor konta holo?
+27/12/22, 1:13 pm - Arnab KIIT: Amar 13
+27/12/22, 1:13 pm - Arnab KIIT: Pelam na morning
+27/12/22, 1:13 pm - Abhrajit: Ohh tui r dipankar eksathe achis?
+27/12/22, 1:13 pm - Abhrajit: Setai chap chilo
+27/12/22, 1:14 pm - Abhrajit: Tao bhalo evening 1 theke 9 toh gar mere dito
+27/12/22, 1:14 pm - Arnab KIIT: Haaa
+27/12/22, 1:14 pm - Abhrajit: College kobe phirchis?
+27/12/22, 1:15 pm - Arnab KIIT: 8 tarikh
+27/12/22, 1:15 pm - Arnab KIIT: Corona ese jak bara
+27/12/22, 1:15 pm - Arnab KIIT: Baler
+27/12/22, 1:15 pm - Arnab KIIT: 😒
+27/12/22, 1:15 pm - Abhrajit: Ohh
+27/12/22, 1:15 pm - Abhrajit: Chance toh kom ache!!
+27/12/22, 1:16 pm - Arnab KIIT: Ache ache😈
+27/12/22, 1:17 pm - Abhrajit: <Media omitted>
+27/12/22, 9:11 pm - Abhrajit: Tui dipankar r shakib eksathe peyechis?
+27/12/22, 9:11 pm - Arnab KIIT: Na re
+27/12/22, 9:11 pm - Arnab KIIT: Dipankar r Amar Same
+27/12/22, 9:11 pm - Arnab KIIT: Shakib 26
+27/12/22, 9:11 pm - Abhrajit: Ohh
+27/12/22, 9:11 pm - Abhrajit: Aee sala
+27/12/22, 9:11 pm - Abhrajit: Gar maris maltar giye
+27/12/22, 9:12 pm - Arnab KIIT: 😂😂
+27/12/22, 9:12 pm - Abhrajit: <Media omitted>
+27/12/22, 9:12 pm - Arnab KIIT: 😂😂
+01/01/23, 12:01 am - Arnab KIIT: Happy New Year Bhai❤️
+01/01/23, 12:02 am - Abhrajit: Happy New Year bhai❤️❤️
+01/01/23, 12:02 am - Abhrajit: 🍻
+01/01/23, 12:14 am - Arnab KIIT: <Media omitted>
+01/01/23, 12:14 am - Abhrajit: Ekdom bhai🥃🚬
+01/01/23, 12:14 am - Arnab KIIT: 😂😂😂
+21/02/23, 8:53 pm - Arnab KIIT: ❤️❤️❤️
+21/02/23, 8:55 pm - Abhrajit: 🔥
+27/02/23, 11:36 pm - Arnab KIIT: <Media omitted>
+27/02/23, 11:36 pm - Abhrajit: <Media omitted>
+06/03/23, 9:00 pm - Abhrajit: Bhai ekta edit korte parbi?
+06/03/23, 9:01 pm - Abhrajit: Pdf
+06/03/23, 9:07 pm - Arnab KIIT: Ki?
+06/03/23, 9:07 pm - Arnab KIIT: 😂
+06/03/23, 9:07 pm - Abhrajit: Choto mal
+06/03/23, 9:07 pm - Abhrajit: <Media omitted>
+06/03/23, 9:07 pm - Abhrajit: <Media omitted>
+06/03/23, 9:08 pm - Arnab KIIT: Deadline kobe??
+06/03/23, 9:09 pm - Abhrajit: Kal
+06/03/23, 11:39 pm - Abhrajit: Time hole pathas bhai
+07/03/23, 12:45 am - Arnab KIIT: Haa re
+07/03/23, 12:45 am - Arnab KIIT: Pathia debo
+07/03/23, 1:19 am - Abhrajit: Okk
+07/03/23, 12:06 pm - Arnab KIIT: <Media omitted>
+07/03/23, 12:42 pm - Abhrajit: Thanks bro❤️❤️
+07/03/23, 1:23 pm - Arnab KIIT: <Media omitted>
+06/08/23, 3:47 pm - Arnab KIIT: vector<long long> solve(vector<int> &A, vector<vector<int> > &B) {
+    int n = A.size();
+    vector<long long> ans;
+    for (int i = 0; i < B.size(); i++) {
+        int type = B[i][0];
+        int l = B[i][1] - 1;
+        int r = B[i][2] - 1;
+        int v = B[i][3];
+        if (type == 1) {
+            for (int j = l; j <= r; j++) {
+                A[j] = v;
+            }
+        } else if (type == 2) {
+            for (int j = l; j <= r; j++) {
+                A[j] |= v;
+            }
+        } else if (type == 3) {
+            long long sum = 0;
+            for (int j = l; j <= r; j++) {
+                long long andSum = A[j];
+                sum += andSum;
+                for (int k = j + 1; k <= r; k++) {
+                    andSum &= A[k];
+                    sum += andSum;
+                }
+            }
+            ans.push_back(sum);
+        }
+    }
+    return ans;
+}
+06/08/23, 4:37 pm - Arnab KIIT: vector<long long> solve(vector<vector<long long> > &A) {
+    int n = A.size();
+    vector<long long> B(n + 1, 0);
+    map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        mp[A[i][0]]++;
+        mp[A[i][1] + 1]--;
+    }
+    int cnt = 0;
+    int prev = -1;
+    for (auto it : mp) {
+        if (prev != -1) {
+            B[cnt] += it.first - prev;
+        }
+        cnt += it.second;
+        prev = it.first;
+    }
+    return B;
+}
+09/08/23, 12:27 am - Abhrajit: <Media omitted>
+17/08/23, 6:45 pm - Abhrajit: <Media omitted>
+20/08/23, 7:34 pm - Abhrajit: 1sr er ta hoyeche?
+20/08/23, 8:21 pm - Abhrajit: 3rd ta hoyeche?
+20/08/23, 8:29 pm - Abhrajit: are bara
+20/08/23, 9:34 pm - Arnab KIIT: Call toh kor
+20/08/23, 9:34 pm - Arnab KIIT: Ami phone ta table a rkehe6ilam
+21/08/23, 11:25 pm - Abhrajit: https://github.com/Abhrajitdas02/Scientific-Calculator
+21/08/23, 11:57 pm - Abhrajit: https://github.com/Abhrajitdas02/Scientific-Calculator
+21/08/23, 11:57 pm - Abhrajit: https://github.com/Indranath165/Music-Application
+22/08/23, 12:22 am - Abhrajit: Eta k star kore dis
+22/08/23, 12:35 pm - Abhrajit: Dupure ki khabi bara?
+31/08/23, 6:36 pm - Abhrajit: ector<int> autocomplete(vector<string> command) {
+    int size = command.size();
+    vector<int> ans(size);
+
+    unordered_map<string, int> memo;
+    for(int i = 0; i < size; i++)
+    {
+        string temp = "";
+        int n = 0;
+        for(auto x: command[i])
+        {
+            temp = temp + x;
+            if(memo[temp]){
+                n = memo[temp];
+            }
+            memo[temp] = i + 1;
+        }
+        ans[i] = (n == 0 && i != 0)?(i):(n);        
+    }
+    return ans;
+}
+31/08/23, 6:36 pm - Arnab KIIT: https://www.thejoboverflow.com/p/p1651/
+31/08/23, 6:37 pm - Abhrajit: https://leetcode.com/discuss/interview-question/3818935/bny-mellon-internship-oa-75k-stipend/2028789
+31/08/23, 7:02 pm - Arnab KIIT: int maybe(const unordered_map<int, int> &have, int x) {
+    int r = 0;
+    // How many parts we need if each part is either x or (x + 1).
+    for (const auto & p : have) {
+        if (x == 0) {
+            r += p.second;
+        } else {
+            // We want as many (x + 1) as we can.
+            const int a = p.second / (x + 1), b = p.second % (x + 1);
+            if (b == 0) {
+                r += a;
+            } else if (x - b <= a) {
+                r += a + 1;
+            } else {
+                return -1;
+            }
+        }
+    }
+    return r;
+}
+
+void better(int &x, int y) {
+    if (y >= 0 && (x < 0 || x > y)) {
+        x = y;
+    }
+}
+
+int solution(const vector<int> &a) {
+    unordered_map<int, int> have;
+    for (int x : a) {
+       ++have[x];   
+    }
+    int m = INT_MAX;
+    for (const auto& p : have) {
+        m = min(m, p.second);
+    }
+    /*
+      Let n = a.size(). Note: have.size() <= n / m.
+      Outer loop for "i": m.
+      Inner loop for "maybe": have.size()
+      So the total time complexity is O(n).
+    */
+    int r = a.size();
+    for (int x = 1; x <= m; ++x) {
+        // Each part is either x or (x + 1).
+        better(r, maybe(have, x));
+    }
+    return r;
+31/08/23, 8:02 pm - Abhrajit: <Media omitted>
+31/08/23, 8:09 pm - Arnab KIIT: #include <iostream>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+int mazeGame(int t[], int endpoint1[], int endpoint2[], int edgeLength[]) {
+  // Create a graph representation of the maze.
+  vector<vector<pair<int, int>>> graph(n + 1);
+  for (int i = 0; i < m; i++) {
+    graph[endpoint1[i]].push_back({endpoint2[i], edgeLength[i]});
+    graph[endpoint2[i]].push_back({endpoint1[i], edgeLength[i]});
+  }
+
+  // Initialize a visited array and a distance array.
+  vector<bool> visited(n + 1, false);
+  vector<int> distance(n + 1, INT_MAX);
+
+  // Perform a breadth-first search from vertex 1.
+  queue<int> queue;
+  queue.push(1);
+  visited[1] = true;
+  distance[1] = 0;
+
+  while (!queue.empty()) {
+    int vertex = queue.front();
+    queue.pop();
+
+    // Check if the vertex has disappeared.
+    if (t[vertex] != -1 && distance[vertex] >= t[vertex]) {
+      return vector<int>(n + 1, -1);
+    }
+
+    // Explore all neighbors of the vertex.
+    for (const auto& neighbor : graph[vertex]) {
+      if (!visited[neighbor.first]) {
+        queue.push(neighbor.first);
+        visited[neighbor.first] = true;
+        distance[neighbor.first] = distance[vertex] + neighbor.second;
+      }
+    }
+  }
+
+  // Return the arrival times at each vertex.
+  return distance;
+}
+31/08/23, 8:15 pm - Arnab KIIT: #include <iostream>
+#include <vector>
+#include <queue>
+#include <set>
+using namespace std;
+
+vector<int> mazeGame(vector<int> t, vector<int> endpoint1, vector<int> endpoint2, vector<int> edgeLength) {
+    int n = t.size();
+    int m = edgeLength.size();
+    
+    // Create an adjacency list to represent the graph
+    vector<vector<pair<int, int>>> adjList(n + 1);
+    for (int i = 0; i < m; i++) {
+        adjList[endpoint1[i]].emplace_back(endpoint2[i], edgeLength[i]);
+        adjList[endpoint2[i]].emplace_back(endpoint1[i], edgeLength[i]);
+    }
+    
+    // Create a set of pairs to keep track of vertices and their arrival times
+    set<pair<int, int>> vertices;
+    vertices.emplace(0, 1); // Start from vertex 1 at time 0
+    
+    vector<int> arrivalTimes(n + 1, -1);
+    arrivalTimes[1] = 0; // Arrival time at vertex 1 is 0
+    
+    while (!vertices.empty()) {
+        auto it = vertices.begin();
+        int currentTime = it->first;
+        int currentVertex = it->second;
+        vertices.erase(it);
+        
+        for (auto& neighbor : adjList[currentVertex]) {
+            int neighborVertex = neighbor.first;
+            int neighborTime = currentTime + neighbor.second;
+            
+            if (neighborTime < t[neighborVertex - 1] && (arrivalTimes[neighborVertex] == -1 || neighborTime < arrivalTimes[neighborVertex])) {
+                if (arrivalTimes[neighborVertex] != -1) {
+                    vertices.erase({arrivalTimes[neighborVertex], neighborVertex});
+                }
+                arrivalTimes[neighborVertex] = neighborTime;
+                vertices.emplace(neighborTime, neighborVertex);
+            }
+        }
+    }
+    
+    return arrivalTimes;
+}
+
+int main() {
+    // Input data
+    vector<int> t = {1, 7, 3, 9};
+    vector<int> endpoint1 = {1, 1, 3};
+    vector<int> endpoint2 = {2, 3, 4};
+    vector<int> edgeLength = {2, 5, 3};
+    
+    // Call the function and get the result
+    vector<int> result = mazeGame(t, endpoint1, endpoint2, edgeLength);
+    
+    // Print the result
+    for (int i = 1; i <= result.size(); i++) {
+        cout << "Vertex " << i << ": Arrival Time = " << result[i] << endl;
+    }
+    
+    return 0;
+}
+06/09/23, 2:01 pm - Abhrajit: <Media omitted>
+06/09/23, 10:16 pm - Abhrajit: <Media omitted>
+06/09/23, 10:16 pm - Abhrajit: <Media omitted>
+06/09/23, 10:16 pm - Abhrajit: <Media omitted>
+06/09/23, 10:16 pm - Abhrajit: <Media omitted>
+06/09/23, 10:16 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+06/09/23, 10:18 pm - Abhrajit: <Media omitted>
+07/09/23, 6:47 pm - Abhrajit: <Media omitted>
+07/09/23, 7:04 pm - Arnab KIIT: Syllabus kotota seta bol bhai
+07/09/23, 7:06 pm - Abhrajit: <Media omitted>
+08/09/23, 1:38 pm - Abhrajit: <Media omitted>
+09/09/23, 1:20 am - Arnab KIIT: <Media omitted>
+14/09/23, 12:07 am - Arnab KIIT: <Media omitted>
+14/09/23, 12:07 am - Arnab KIIT: <Media omitted>
+14/09/23, 12:07 am - Arnab KIIT: <Media omitted>
+15/09/23, 11:12 pm - Abhrajit: <Media omitted>
+17/09/23, 11:18 pm - Abhrajit: 11,12,9
+20/09/23, 10:55 pm - Arnab KIIT: <Media omitted>
+20/09/23, 10:55 pm - Arnab KIIT: Participate korbi?
+20/09/23, 10:56 pm - Abhrajit: haan kobe ache?
+20/09/23, 10:56 pm - Arnab KIIT: 26th September last date for registration
+20/09/23, 10:57 pm - Abhrajit: 4 joner team?
+20/09/23, 10:57 pm - Arnab KIIT: Haa 2-4 people
+20/09/23, 10:57 pm - Abhrajit: r kauke dhokabi?
+20/09/23, 10:57 pm - Arnab KIIT: Abhishek asbe?? Naki or team ache??
+20/09/23, 10:58 pm - Arnab KIIT: Jodi or team na thake toh oke bole dekh
+20/09/23, 10:58 pm - Abhrajit: dara jiges korchi
+20/09/23, 10:58 pm - Arnab KIIT: Ok janas kal apply korbo
+20/09/23, 11:00 pm - Arnab KIIT: https://unstop.com/competitions/hackon-with-amazon-season-3-amazon-729950
+20/09/23, 11:00 pm - Abhrajit: okk
+20/09/23, 11:05 pm - Abhrajit: full mosti korchis barite
+20/09/23, 11:08 pm - Arnab KIIT: Na bhai sarir ta kharap korche abar
+20/09/23, 11:08 pm - Arnab KIIT: Tui janas kalkei
+20/09/23, 11:08 pm - Arnab KIIT: Eta ki korbi
+20/09/23, 11:09 pm - Abhrajit: Haan haan ami sure in
+20/09/23, 11:09 pm - Abhrajit: Abhishek er ta kal bole debo
+20/09/23, 11:09 pm - Arnab KIIT: Okk
+21/09/23, 11:05 am - Arnab KIIT: Tor kache HPC Qst Paper ta thakle patha na ektu pic tule
+21/09/23, 11:10 am - Abhrajit: <Media omitted>
+21/09/23, 3:48 pm - Abhrajit: Oii
+21/09/23, 3:48 pm - Abhrajit: Abhishek in ache r ekjon oo jogar hoye geche
+21/09/23, 5:28 pm - Arnab KIIT: R ke??
+21/09/23, 6:03 pm - Arnab KIIT: Kibe??
+21/09/23, 6:03 pm - Arnab KIIT: Bol lewra
+21/09/23, 6:04 pm - Abhrajit: Anisha bole ekta meye ache development pare
+21/09/23, 6:04 pm - Arnab KIIT: Bara ami e kichu parina🤣🤣
+21/09/23, 6:05 pm - Abhrajit: Are abhishek k chara karor oto experience nei
+21/09/23, 6:06 pm - Abhrajit: Tui firbi kobe?
+21/09/23, 6:06 pm - Arnab KIIT: Toh
+21/09/23, 6:06 pm - Arnab KIIT: Abhishek ke bol
+21/09/23, 6:06 pm - Arnab KIIT: Register kore team leader hote
+21/09/23, 6:06 pm - Arnab KIIT: Tarpor amader ke invite korte
+21/09/23, 6:06 pm - Abhrajit: Haan
+21/09/23, 6:10 pm - Arnab KIIT: Bole de oke
+21/09/23, 6:10 pm - Arnab KIIT: Tarpor invite pathabe sobaike
+21/09/23, 6:11 pm - Abhrajit: Haan ok
+21/09/23, 6:28 pm - Abhrajit: Tor mail de invite pathabe
+21/09/23, 6:28 pm - Arnab KIIT: arnabmaity2411@gmail.com
+21/09/23, 6:28 pm - Arnab KIIT: Tor Goldman er mail elo??
+21/09/23, 6:28 pm - Abhrajit: Haan
+21/09/23, 6:28 pm - Arnab KIIT: Hmm amar o elo
+21/09/23, 6:28 pm - Arnab KIIT: 24th
+21/09/23, 6:29 pm - Abhrajit: Hmm
+21/09/23, 6:29 pm - Abhrajit: 10 am
+21/09/23, 6:29 pm - Arnab KIIT: Haa
+21/09/23, 8:29 pm - Arnab KIIT: Kire bara
+21/09/23, 8:29 pm - Arnab KIIT: Invite pathate bol
+21/09/23, 8:32 pm - Abhrajit: <Media omitted>
+21/09/23, 8:32 pm - Abhrajit: <Media omitted>
+21/09/23, 8:33 pm - Arnab KIIT: Ki meet be?🤔
+21/09/23, 8:33 pm - Arnab KIIT: Internship toh 2024 a start hobe
+21/09/23, 8:33 pm - Abhrajit: Internship er
+21/09/23, 8:33 pm - Abhrajit: Oo akhun already ekta korche
+21/09/23, 8:33 pm - Arnab KIIT: 🫡🫡🫡
+21/09/23, 8:33 pm - Arnab KIIT: Kon company
+21/09/23, 8:33 pm - Abhrajit: <Media omitted>
+21/09/23, 8:34 pm - Arnab KIIT: Amra bara puri te somudra ache
+21/09/23, 8:34 pm - Arnab KIIT: Chol otei dube mori😂
+21/09/23, 8:34 pm - Abhrajit: Dk ai labs
+21/09/23, 8:35 pm - Arnab KIIT: Accha
+21/09/23, 8:35 pm - Abhrajit: Bara tui Puri ghurte gechis
+21/09/23, 8:35 pm - Arnab KIIT: Thik ache
+21/09/23, 8:35 pm - Arnab KIIT: Ager year School friend der sathe giachilam be
+21/09/23, 8:35 pm - Abhrajit: Ohh
+21/09/23, 8:35 pm - Arnab KIIT: Ai son na
+21/09/23, 8:35 pm - Abhrajit: Bolo bara
+21/09/23, 8:35 pm - Arnab KIIT: 29th & 30 th September ki chuti college??
+21/09/23, 8:36 pm - Arnab KIIT: Khoj laga toh
+21/09/23, 8:36 pm - Arnab KIIT: Shakib chudi bolche sobaike
+21/09/23, 8:36 pm - Abhrajit: Haan bolche toh
+21/09/23, 8:36 pm - Arnab KIIT: Ke bolche??
+21/09/23, 8:37 pm - Abhrajit: Leena das speaking
+21/09/23, 8:37 pm - Abhrajit: leena das
+21/09/23, 8:37 pm - Arnab KIIT: Tui sunechis??
+21/09/23, 8:37 pm - Abhrajit: Naa
+21/09/23, 8:37 pm - Arnab KIIT: Shakib er kotha sunis na
+21/09/23, 8:38 pm - Abhrajit: Jani na sure hoye bolbo
+21/09/23, 8:38 pm - Arnab KIIT: Haa ektu khoj ne toh
+21/09/23, 8:38 pm - Abhrajit: Tui k tahole lomba chuti marbi
+21/09/23, 8:38 pm - Arnab KIIT: Na bhai
+21/09/23, 8:38 pm - Arnab KIIT: Chole jabo
+21/09/23, 8:38 pm - Abhrajit: Ohh
+21/09/23, 8:39 pm - Arnab KIIT: Tui amader team er meyetake chinis??
+21/09/23, 8:39 pm - Abhrajit: naa abhishek er chena
+21/09/23, 8:40 pm - Arnab KIIT: Accha
+21/09/23, 8:40 pm - Abhrajit: kiit ei pore
+21/09/23, 8:40 pm - Arnab KIIT: Ohh
+21/09/23, 8:44 pm - Arnab KIIT: 27 tarikh Quiz hobe 20 minutes er
+21/09/23, 8:45 pm - Abhrajit: Haan
+21/09/23, 8:45 pm - Abhrajit: Tar por coding round then hackathon
+21/09/23, 8:45 pm - Abhrajit: Asha korchi shortlisted hoye jabo
+21/09/23, 8:46 pm - Arnab KIIT: Ore bara💥💥
+21/09/23, 8:46 pm - Arnab KIIT: R a kom jon apply koreche dekhlam
+21/09/23, 8:47 pm - Abhrajit: 10000 jon koreche
+21/09/23, 8:48 pm - Arnab KIIT: Hmmm
+21/09/23, 8:48 pm - Arnab KIIT: Flipkart grid a 1 lakh+ korechilo😂
+21/09/23, 8:48 pm - Abhrajit: Uri sala
+21/09/23, 8:49 pm - Abhrajit: Haan or theke toh better chance ache
+21/09/23, 8:51 pm - Arnab KIIT: Haa bhai
+21/09/23, 8:51 pm - Arnab KIIT: Setai
+21/09/23, 8:51 pm - Arnab KIIT: Dekha jak
+21/09/23, 8:53 pm - Abhrajit: Hmm
+21/09/23, 11:22 pm - Arnab KIIT: https://leetcode.com/priyasha_2002/
+21/09/23, 11:31 pm - Abhrajit: k eii bara ta
+21/09/23, 11:35 pm - Arnab KIIT: Profile ta dekhli??
+21/09/23, 11:35 pm - Arnab KIIT: Guess kor airokom leetcode profile nia kothai chakri korbe???
+21/09/23, 11:35 pm - Abhrajit: Kichui toh nei dekhar moto
+21/09/23, 11:36 pm - Arnab KIIT: Exactly
+21/09/23, 11:36 pm - Arnab KIIT: 😂😂😂
+21/09/23, 11:36 pm - Arnab KIIT: Ebar eta bol
+21/09/23, 11:36 pm - Abhrajit: <Media omitted>
+21/09/23, 11:36 pm - Abhrajit: Etar khela
+21/09/23, 11:36 pm - Abhrajit: Koto 12lpa?
+21/09/23, 11:37 pm - Arnab KIIT: Google a Internship + Full Time Offer for SWE
+21/09/23, 11:37 pm - Abhrajit: 🙏🏻🙏🏻 humanity left
+21/09/23, 11:37 pm - Abhrajit: <Media omitted>
+21/09/23, 11:38 pm - Arnab KIIT: https://www.linkedin.com/in/akhouri-priyasha-9401011b8
+21/09/23, 11:38 pm - Arnab KIIT: Dekhe ai
+21/09/23, 11:38 pm - Arnab KIIT: Eta kikore hote pare bhai🙏🏼
+21/09/23, 11:38 pm - Arnab KIIT: Lok 1000 ta question solve kore Google pawar jonyo
+21/09/23, 11:39 pm - Arnab KIIT: Na toh valo kichu project ache
+21/09/23, 11:39 pm - Arnab KIIT: Github ao active nei
+21/09/23, 11:39 pm - Arnab KIIT: Na onyo kono coding profile ache
+21/09/23, 11:39 pm - Abhrajit: Er thekeo boro kotha debarka follow kore boshe ache
+21/09/23, 11:39 pm - Abhrajit: Sala
+21/09/23, 11:39 pm - Abhrajit: Onek like peyeche
+21/09/23, 11:39 pm - Arnab KIIT: Seriously bhai vorsa uthe geche
+21/09/23, 11:39 pm - Abhrajit: Amader batch er
+21/09/23, 11:39 pm - Arnab KIIT: Eta dekhar por
+21/09/23, 11:39 pm - Arnab KIIT: 🙏🏼🙏🏼
+21/09/23, 11:39 pm - Abhrajit: 🥲
+21/09/23, 11:40 pm - Arnab KIIT: Dekh
+21/09/23, 11:40 pm - Arnab KIIT: Bole6ilam
+21/09/23, 11:40 pm - Abhrajit: Haan manchi
+21/09/23, 11:40 pm - Arnab KIIT: Kismat Meherban
+Toh gadha bhi pehelwan
+21/09/23, 11:40 pm - Abhrajit: Ekdom
+21/09/23, 11:40 pm - Arnab KIIT: 🙏🏼🙏🏼
+21/09/23, 11:40 pm - Arnab KIIT: Bara oi profile nia jodi google pawa jai
+21/09/23, 11:40 pm - Abhrajit: Amader sala gar mere ache
+21/09/23, 11:40 pm - Arnab KIIT: Tahole toh ami Elon Musk er bap hoye jabo🙏🏼
+21/09/23, 11:40 pm - Abhrajit: Tahole porasona chere debo
+21/09/23, 11:40 pm - Abhrajit: 😂😂😂
+21/09/23, 11:41 pm - Arnab KIIT: Tui hostel a dekhas
+21/09/23, 11:41 pm - Arnab KIIT: R jiges koris
+21/09/23, 11:41 pm - Arnab KIIT: Keo jodi google bole
+21/09/23, 11:41 pm - Abhrajit: Haan
+21/09/23, 11:41 pm - Arnab KIIT: Ami kiit chere debo
+21/09/23, 11:41 pm - Arnab KIIT: 🙏🏼
+21/09/23, 11:41 pm - Abhrajit: Baal bolbe
+21/09/23, 11:41 pm - Abhrajit: 😂
+21/09/23, 11:42 pm - Arnab KIIT: 180 ta problem
+21/09/23, 11:42 pm - Arnab KIIT: Tao last 1 year a 10 din active🙏🏼
+21/09/23, 11:42 pm - Arnab KIIT: Mane puro 3rd year a 10 din leetcode khule6e
+21/09/23, 11:51 pm - Arnab KIIT: Github a calculator project bhai😂😂
+21/09/23, 11:51 pm - Abhrajit: sabash
+21/09/23, 11:51 pm - Arnab KIIT: Tui
+21/09/23, 11:51 pm - Abhrajit: tahole amar oo akhun pawar kotha
+21/09/23, 11:51 pm - Arnab KIIT: Anek egia bhai
+21/09/23, 11:51 pm - Arnab KIIT: Ghumia por
+21/09/23, 11:51 pm - Arnab KIIT: Tor NASA te thakar kotha
+21/09/23, 11:52 pm - Arnab KIIT: Ki bara kiit a pore achis bal
+21/09/23, 11:52 pm - Abhrajit: haan😂
+21/09/23, 11:52 pm - Abhrajit: hmm setai
+21/09/23, 11:52 pm - Arnab KIIT: Chol Motivation
+21/09/23, 11:52 pm - Arnab KIIT: Je 180 Leetcode koreo google pawa jete pare
+21/09/23, 11:52 pm - Arnab KIIT: Amar toh 80 ta hoye geche
+21/09/23, 11:52 pm - Abhrajit: haan ekdom
+21/09/23, 11:52 pm - Arnab KIIT: More 100 to go😌
+21/09/23, 11:53 pm - Abhrajit: nothing is impossible
+21/09/23, 11:53 pm - Arnab KIIT: Yessss
+21/09/23, 11:53 pm - Arnab KIIT: 😌😌
+21/09/23, 11:53 pm - Arnab KIIT: Kalkei operation korate jacchi
+21/09/23, 11:53 pm - Arnab KIIT: Bichi ta kete meye hoye jabo
+21/09/23, 11:55 pm - Abhrajit: ese tahole qc te  dhukis
+21/09/23, 11:55 pm - Abhrajit: akhun handle mere ghumia poro
+21/09/23, 11:56 pm - Abhrajit: onek pore niyecho
+21/09/23, 11:58 pm - Arnab KIIT: Bal pora
+21/09/23, 11:58 pm - Arnab KIIT: Porbona
+21/09/23, 11:59 pm - Arnab KIIT: Pore ki hobe
+21/09/23, 11:59 pm - Arnab KIIT: Bal hobe leetcode kore
+21/09/23, 11:59 pm - Abhrajit: hmm
+22/09/23, 12:00 am - Arnab KIIT: Bara 4 ta contest diache
+22/09/23, 12:00 am - Arnab KIIT: 😂😂
+22/09/23, 12:00 am - Arnab KIIT: Eta ki bhai
+22/09/23, 12:00 am - Abhrajit: haan bara
+22/09/23, 12:00 am - Arnab KIIT: Sei profile ta abar lagia rekhe6e😂😂🤣
+22/09/23, 12:00 am - Abhrajit: easy question koreche max
+22/09/23, 12:00 am - Arnab KIIT: 100 ta easy qst
+22/09/23, 12:00 am - Arnab KIIT: 🙏🏼
+22/09/23, 12:01 am - Arnab KIIT: Quote of the Day : We are not far away 😎😎
+22/09/23, 2:14 am - Abhrajit: 🙏🏻🙏🏻
+22/09/23, 11:16 am - Arnab KIIT: Abhishek ke bolbi bokachoda
+22/09/23, 11:16 am - Arnab KIIT: Aaj korte
+22/09/23, 11:51 am - Abhrajit: Haan bara ki ekta prblm asche amaro aschilona age
+22/09/23, 9:42 pm - Arnab KIIT: Kire bhai
+22/09/23, 9:42 pm - Arnab KIIT: Abhishek ke bol
+22/09/23, 9:42 pm - Arnab KIIT: Invite pathate
+22/09/23, 9:42 pm - Arnab KIIT: Bara kobe korbi
+22/09/23, 9:51 pm - Arnab KIIT: Toke jodi Hackathon tar byaper a keo jiges kore
+22/09/23, 9:51 pm - Arnab KIIT: Shakib Mota / Atrijo
+22/09/23, 9:51 pm - Arnab KIIT: Tui bolis tui amake team a niachis😂
+22/09/23, 9:51 pm - Arnab KIIT: Nahole ora amar gar mere debe
+22/09/23, 9:51 pm - Abhrajit: Are sir
+22/09/23, 9:51 pm - Abhrajit: Are abhishek er monehoye onno team ache
+22/09/23, 9:51 pm - Arnab KIIT: Haa bara bolbi😒
+22/09/23, 9:51 pm - Abhrajit: Haan haan
+22/09/23, 9:51 pm - Arnab KIIT: Gar mereche
+22/09/23, 9:52 pm - Arnab KIIT: Tahole amra ke ke??
+22/09/23, 9:52 pm - Abhrajit: R o onek kota hackathon korche
+22/09/23, 9:52 pm - Arnab KIIT: Bol bokachoda
+22/09/23, 9:52 pm - Abhrajit: Ami dekhchi
+22/09/23, 9:52 pm - Abhrajit: Dekhchi bc
+22/09/23, 9:52 pm - Abhrajit: Khujte de
+22/09/23, 9:53 pm - Arnab KIIT: Jaldi dekh bhai
+22/09/23, 9:53 pm - Arnab KIIT: Nahole pod mara jabe
+22/09/23, 9:53 pm - Abhrajit: Last date kobe?
+22/09/23, 9:53 pm - Abhrajit: Ache
+22/09/23, 9:54 pm - Arnab KIIT: Bara 26th
+22/09/23, 9:54 pm - Arnab KIIT: Keo na ele tui r ami😂🤣
+22/09/23, 9:56 pm - Arnab KIIT: Taratari
+22/09/23, 9:56 pm - Arnab KIIT: Khoj laga bhai
+22/09/23, 9:57 pm - Arnab KIIT: Register korte hobe
+22/09/23, 10:05 pm - Abhrajit: Haan haan
+22/09/23, 10:06 pm - Abhrajit: Lagachi jugaar
+22/09/23, 10:06 pm - Abhrajit: Amraai 100
+22/09/23, 10:06 pm - Abhrajit: Bichi fatia debo
+22/09/23, 10:06 pm - Arnab KIIT: 😂😂
+22/09/23, 10:06 pm - Arnab KIIT: Bara jogar kor
+22/09/23, 10:06 pm - Arnab KIIT: Kaoke
+22/09/23, 10:06 pm - Abhrajit: Tui achis toh r ki chai
+22/09/23, 10:07 pm - Arnab KIIT: Bokachoda ami kichu parina
+22/09/23, 10:07 pm - Abhrajit: Orom mone hoye
+22/09/23, 10:07 pm - Abhrajit: Tui asol khel dekhia dini
+22/09/23, 10:17 pm - Abhrajit: Goldman sachs dichhis toh
+22/09/23, 10:22 pm - Arnab KIIT: Haa bara
+22/09/23, 10:22 pm - Arnab KIIT: 24th 5PM kore diache
+22/09/23, 10:23 pm - Abhrajit: Haan
+22/09/23, 10:23 pm - Abhrajit: Aee taye fatate hbe
+22/09/23, 10:25 pm - Arnab KIIT: Ami ki toke invite pathabo?
+22/09/23, 10:25 pm - Arnab KIIT: Bol
+22/09/23, 10:25 pm - Arnab KIIT: Tahole team ta ready thakbe
+22/09/23, 10:25 pm - Abhrajit: Dara bole debo
+22/09/23, 10:26 pm - Arnab KIIT: Atleast 2 jone participate toh korte parbo
+22/09/23, 10:26 pm - Abhrajit: Khuji age
+22/09/23, 10:26 pm - Arnab KIIT: Bara
+22/09/23, 10:26 pm - Arnab KIIT: Poreo add kora jabe
+22/09/23, 10:26 pm - Arnab KIIT: Tui add hoye thak na
+23/09/23, 9:11 pm - Arnab KIIT: Kire
+23/09/23, 9:11 pm - Arnab KIIT: Kaoke peli??
+23/09/23, 9:11 pm - Arnab KIIT: Nahole bol bhai
+23/09/23, 9:11 pm - Arnab KIIT: Ami Trisha er team ai chole jabo
+23/09/23, 9:13 pm - Arnab KIIT: Missed voice call
+23/09/23, 9:14 pm - Abhrajit: Bhai asole
+23/09/23, 9:14 pm - Abhrajit: Bepare ta amar already 3 te hackathon e dhuke achi
+23/09/23, 9:14 pm - Abhrajit: Sih oo cholche
+23/09/23, 9:15 pm - Abhrajit: Toh time dite parbo na ki sure noi re kal theke sih tai korchilam praye matro 4 ghonta ghumiachi
+23/09/23, 9:15 pm - Arnab KIIT: Tahole ami oder team ai chole jacchi re..Tui ele asis..3 jon  hoyeche
+23/09/23, 9:15 pm - Arnab KIIT: Ele bolis
+23/09/23, 9:15 pm - Arnab KIIT: Tokeo add kore nebo
+23/09/23, 9:15 pm - Arnab KIIT: Okk??
+23/09/23, 9:15 pm - Abhrajit: Okk
+23/09/23, 9:15 pm - Abhrajit: Haan bhai
+23/09/23, 9:15 pm - Abhrajit: No prblm
+23/09/23, 9:15 pm - Arnab KIIT: Thik ache chol
+23/09/23, 9:16 pm - Abhrajit: Haan are msg khuli ni kalke sih er jonne
+23/09/23, 9:19 pm - Arnab KIIT: Thik ache re.No Prblm
+24/09/23, 5:52 pm - Abhrajit: Missing elements ans bol
+24/09/23, 6:32 pm - Arnab KIIT: Par6ina bhai
+24/09/23, 6:32 pm - Arnab KIIT: Gar fete ache
+24/09/23, 7:26 pm - Abhrajit: haan
+25/09/23, 11:24 pm - Abhrajit: Apply korar link ta patha toh
+25/09/23, 11:24 pm - Abhrajit: Paypal
+25/09/23, 11:27 pm - Arnab KIIT: Dicchi dara
+25/09/23, 11:27 pm - Abhrajit: De bhai taratari
+25/09/23, 11:28 pm - Arnab KIIT: https://wd1.myworkdaysite.com/recruiting/paypal/jobs/job/Bangalore-Karnataka-India/Software-Engineer---2024-Summer-Intern_R0107546
+02/10/23, 12:56 pm - Arnab KIIT: <Media omitted>
+12/10/23, 3:08 pm - Abhrajit: Ki re kmon gelo?
+12/10/23, 3:08 pm - Abhrajit: Suor
+12/10/23, 7:33 pm - Arnab KIIT: Oi motamoti bhai
+12/10/23, 7:33 pm - Arnab KIIT: BD toh chude chutni
+12/10/23, 7:33 pm - Arnab KIIT: Tui bol
+12/10/23, 7:33 pm - Arnab KIIT: Tor kemon gelo
+12/10/23, 7:33 pm - Abhrajit: daa chude geche amar
+12/10/23, 7:33 pm - Arnab KIIT: Kal bari👽
+12/10/23, 7:33 pm - Abhrajit: meghna chudeche
+12/10/23, 7:33 pm - Arnab KIIT: Chude geche naki chude diache😂
+12/10/23, 7:33 pm - Abhrajit: sabash
+12/10/23, 7:33 pm - Arnab KIIT: Tor Dell kemon gelo bol
+12/10/23, 7:33 pm - Abhrajit: chude diyeche🤣🥲
+12/10/23, 7:34 pm - Abhrajit: Shortlisted toh hoyechr ebar dekhi
+12/10/23, 7:34 pm - Arnab KIIT: Mane?? Next Round??
+12/10/23, 7:34 pm - Abhrajit: Haan
+12/10/23, 7:34 pm - Arnab KIIT: Bara Exam kemon dili seta bol
+12/10/23, 7:35 pm - Abhrajit: Exam easy chilo
+12/10/23, 7:35 pm - Abhrajit: Bhai
+12/10/23, 7:35 pm - Arnab KIIT: Exam er porer round a chole gechis??
+12/10/23, 7:35 pm - Abhrajit: Onek question gpt lagei ni
+12/10/23, 7:35 pm - Abhrajit: Haan interview
+12/10/23, 7:35 pm - Arnab KIIT: Bah👍🏻
+12/10/23, 7:35 pm - Arnab KIIT: Kobe hobe??
+12/10/23, 7:35 pm - Abhrajit: Jodi test ditis bhai onek pati questions chilo dbms,os r cpp theke
+12/10/23, 7:35 pm - Abhrajit: 18th ee
+12/10/23, 7:35 pm - Arnab KIIT: Toke aste hobe tahole??
+12/10/23, 7:36 pm - Abhrajit: Na online hbe
+12/10/23, 7:36 pm - Arnab KIIT: Amader toh bad dia dilo bhai
+12/10/23, 7:36 pm - Arnab KIIT: Accha
+12/10/23, 7:36 pm - Arnab KIIT: Valo valo
+12/10/23, 7:36 pm - Abhrajit: Setai k jane
+12/10/23, 7:36 pm - Abhrajit: Kal barite🍻🍻
+12/10/23, 7:36 pm - Arnab KIIT: Valo kore de Interview
+12/10/23, 7:37 pm - Arnab KIIT: 😂😂
+12/10/23, 7:37 pm - Abhrajit: haan try korbo dekhi kmon interviewer pore
+12/10/23, 7:37 pm - Arnab KIIT: Hmmm peye jabi etate
+12/10/23, 7:37 pm - Abhrajit: jni na
+12/10/23, 7:37 pm - Arnab KIIT: Koto jon ke niache interview er jonyo??
+12/10/23, 7:37 pm - Abhrajit: 55
+12/10/23, 7:38 pm - Abhrajit: onek jon ache
+12/10/23, 7:38 pm - Arnab KIIT: Accha tahole toh tao niache
+12/10/23, 7:38 pm - Abhrajit: hmm setai
+12/10/23, 8:25 pm - Arnab KIIT: BEST OF LUCK BHAI❤️❤️
+
+Interview er jonno
+12/10/23, 8:55 pm - Abhrajit: Thnxx bro❤️❤️
+18/10/23, 6:41 pm - Arnab KIIT: Kire bhai
+18/10/23, 6:41 pm - Arnab KIIT: Kemon gelo Interview??
+18/10/23, 6:55 pm - Abhrajit: Hr round holo sobhe
+18/10/23, 6:56 pm - Abhrajit: Wait korchi results er
+18/10/23, 6:56 pm - Arnab KIIT: Valo holo??
+18/10/23, 6:57 pm - Arnab KIIT: Accha
+18/10/23, 6:57 pm - Abhrajit: Haan thik thak toh diyechi
+18/10/23, 6:58 pm - Arnab KIIT: Byas byas tahole hoye jabe r ki
+18/10/23, 6:58 pm - Arnab KIIT: Masti😎
+18/10/23, 6:58 pm - Abhrajit: Dekhi bhai
+18/10/23, 6:58 pm - Abhrajit: Mal gulo ki kore
+18/10/23, 6:58 pm - Arnab KIIT: Party Bara😎👽
+18/10/23, 6:58 pm - Abhrajit: Dara dekhte de
+18/10/23, 7:21 pm - Arnab KIIT: Result kokhn debe banchod gulo??
+18/10/23, 7:27 pm - Abhrajit: Jni na akhuno bolche 15 mins
+18/10/23, 7:27 pm - Abhrajit: Bosiye rekheche
+18/10/23, 7:28 pm - Arnab KIIT: Kothai hocche??
+18/10/23, 7:28 pm - Abhrajit: Biotech auditorium
+18/10/23, 7:28 pm - Arnab KIIT: Sala auditorium a nicche
+18/10/23, 7:28 pm - Arnab KIIT: Stage a dak6e naki interview nite
+18/10/23, 7:28 pm - Arnab KIIT: ?
+18/10/23, 7:28 pm - Abhrajit: Abe audi te boshache
+18/10/23, 7:29 pm - Abhrajit: Nichhe biotech buulding ee
+18/10/23, 7:29 pm - Arnab KIIT: Accha
+18/10/23, 7:29 pm - Abhrajit: Technical conference hall e niyeche r HR niyeche biotech classroom e
+18/10/23, 7:29 pm - Arnab KIIT: Technical a kotojon ke bad dilo??
+18/10/23, 7:30 pm - Abhrajit: 19 jon ache HR ee
+18/10/23, 7:30 pm - Abhrajit: Aee 35 jon k
+18/10/23, 7:30 pm - Arnab KIIT: Nice
+18/10/23, 7:31 pm - Abhrajit: Chap lagche bhai
+18/10/23, 7:31 pm - Arnab KIIT: Abe hoye jabe tor chap nisna
+18/10/23, 7:31 pm - Abhrajit: Dekhajak
+18/10/23, 7:31 pm - Arnab KIIT: BEST OF LUCK❤️
+18/10/23, 7:31 pm - Abhrajit: Thnx bhai
+18/10/23, 7:32 pm - Arnab KIIT: Ki holo janas
+18/10/23, 7:32 pm - Abhrajit: Haan ekdom
+21/10/23, 7:18 pm - Arnab KIIT: Kire bara
+21/10/23, 7:19 pm - Arnab KIIT: Kichu bollina je😒
+21/10/23, 7:19 pm - Abhrajit: Are bara gulo laurami korlo
+21/10/23, 7:20 pm - Arnab KIIT: Ki bol
+21/10/23, 7:20 pm - Abhrajit: 11 jon k niyeche
+21/10/23, 7:20 pm - Abhrajit: 9 jon k barr koeche HR theke
+21/10/23, 7:20 pm - Arnab KIIT: Kon basis a??
+21/10/23, 7:20 pm - Abhrajit: HR
+21/10/23, 7:21 pm - Arnab KIIT: Accha
+21/10/23, 7:21 pm - Arnab KIIT: Thik ache Pujo Enjoy kor akhn
+21/10/23, 7:21 pm - Arnab KIIT: Chap Nisna
+21/10/23, 7:21 pm - Arnab KIIT: Hoye jabe kothao na kothao
+21/10/23, 7:21 pm - Abhrajit: Haan
+21/10/23, 7:21 pm - Arnab KIIT: Bari ese gechis toh??
+21/10/23, 7:21 pm - Abhrajit: Haan
+21/10/23, 7:21 pm - Abhrajit: Kalke
+21/10/23, 7:21 pm - Arnab KIIT: Etai bara sob theke chaper jinis
+21/10/23, 7:21 pm - Arnab KIIT: Bal 6al question dhore
+21/10/23, 7:22 pm - Abhrajit: Haan
+21/10/23, 7:22 pm - Arnab KIIT: Ektu valo kore chat te jante hoi
+21/10/23, 7:22 pm - Arnab KIIT: Ok ok
+21/10/23, 7:22 pm - Arnab KIIT: Pujo te kothai ghur6is bara??
+21/10/23, 7:22 pm - Abhrajit: Adalai question korchilo
+21/10/23, 7:22 pm - Abhrajit: Na kolkata tei achi
+21/10/23, 7:22 pm - Abhrajit: R experience toh pelam
+21/10/23, 7:23 pm - Arnab KIIT: Abe Kolkata te kothai ghurchis??
+21/10/23, 7:23 pm - Abhrajit: Haan
+21/10/23, 7:23 pm - Arnab KIIT: Haa setoh ekdom👍🏻
+21/10/23, 7:23 pm - Arnab KIIT: Otar toh dorkar achei
+21/10/23, 7:23 pm - Abhrajit: Akhun oo baire achi
+21/10/23, 7:23 pm - Abhrajit: Tui beros ni??
+21/10/23, 7:24 pm - Arnab KIIT: Na re..ai bondhura eksathe adda mari byas
+21/10/23, 7:24 pm - Arnab KIIT: Ohhh Enjoy Enjoy
+21/10/23, 7:24 pm - Arnab KIIT: Firbi kobe??
+21/10/23, 7:24 pm - Abhrajit: 29
+21/10/23, 7:25 pm - Arnab KIIT: Okkk👍🏻
+21/10/23, 11:28 pm - Abhrajit: Tui kobe firchis?
+21/10/23, 11:28 pm - Abhrajit: Full party cholche toh?
+22/10/23, 11:36 pm - Arnab KIIT: 31
+22/10/23, 11:36 pm - Arnab KIIT: Haa bara sob bondhu eseche...Moja toh hoche
+23/10/23, 12:02 am - Abhrajit: <Media omitted>
+10/11/23, 10:08 pm - Arnab KIIT: <Media omitted>
+15/11/23, 6:30 pm - Arnab KIIT: <Media omitted>
+15/11/23, 6:30 pm - Arnab KIIT: <Media omitted>
+18/11/23, 2:03 pm - Arnab KIIT: <Media omitted>
+20/11/23, 9:41 pm - Abhrajit: <Media omitted>
+25/11/23, 1:49 am - Abhrajit: <Media omitted>
+25/11/23, 1:50 am - Abhrajit: <Media omitted>
+25/11/23, 1:59 am - Abhrajit: <Media omitted>
+04/12/23, 11:15 pm - Arnab KIIT: <Media omitted>
+06/12/23, 9:48 pm - Abhrajit: harddisk kon company bhalo re?
+06/12/23, 10:54 pm - Arnab KIIT: WD
+06/12/23, 11:21 pm - Abhrajit: 250gb?
+06/12/23, 11:22 pm - Arnab KIIT: Bara tor jotota lagbe totota ken
+06/12/23, 11:59 pm - Abhrajit: Haan mane koto neye?
+06/12/23, 11:59 pm - Abhrajit: Cost
+07/12/23, 12:09 pm - Arnab KIIT: Janina re
+07/12/23, 12:09 pm - Arnab KIIT: Flipkart dekh
+07/12/23, 12:52 pm - Abhrajit: okk
+19/12/23, 11:02 pm - Arnab KIIT: Ekdom hero lagche je
+19/12/23, 11:36 pm - Abhrajit: 😂❤️
+19/12/23, 11:36 pm - Abhrajit: Seii bhai
+19/12/23, 11:36 pm - Abhrajit: Ki khobor tor
+20/12/23, 12:21 am - Arnab KIIT: Kothai gechis re??
+20/12/23, 12:21 am - Arnab KIIT: Darjeeling??
+20/12/23, 12:21 am - Arnab KIIT: Aitoh
+20/12/23, 12:21 am - Arnab KIIT: Chole jacche r ki
+20/12/23, 12:21 am - Arnab KIIT: Tor khobor bol
+20/12/23, 12:30 am - Abhrajit: Kurseong, sandakphu r darjeeling
+20/12/23, 12:31 am - Abhrajit: Bhaloi
+20/12/23, 12:31 am - Arnab KIIT: Bah bah
+20/12/23, 12:31 am - Abhrajit: 5 diner jonne gechilam
+20/12/23, 12:31 am - Arnab KIIT: Snowfall a meye dekhcho toh??
+20/12/23, 12:31 am - Abhrajit: Akhun train e
+20/12/23, 12:31 am - Arnab KIIT: Acvha
+20/12/23, 12:31 am - Abhrajit: Meye khub olpo chilo okhane
+20/12/23, 12:31 am - Arnab KIIT: Tor kotha je Shakib er moto hoye jacche 😂😂
+20/12/23, 12:31 am - Abhrajit: Darjeeling ee meye bhorti💯
+20/12/23, 12:32 am - Abhrajit: Ki bolis
+20/12/23, 12:40 am - Arnab KIIT: Oi je Akhun bolli
+20/12/23, 12:40 am - Arnab KIIT: Oirokom Shakib bole
+20/12/23, 12:41 am - Abhrajit: Ohh😂😂
+20/12/23, 12:41 am - Abhrajit: Oii khanki tar toh kono khobor neu
+20/12/23, 2:00 am - Arnab KIIT: Haa mal ta
+20/12/23, 2:00 am - Arnab KIIT: Barite gia
+20/12/23, 2:00 am - Arnab KIIT: Konai dhuke geche
+20/12/23, 2:01 am - Abhrajit: Haan gare dhuke geche😂
+21/12/23, 12:30 am - Arnab KIIT: Ladies Man
+21/12/23, 12:33 am - Abhrajit: Seii re😂😂
+23/12/23, 11:29 pm - Abhrajit: satarupa Mohanty kmon teacher?
+24/12/23, 12:10 am - Arnab KIIT: Amar dsa lab a chilo
+24/12/23, 12:10 am - Arnab KIIT: Amar toh valoi legechilo bhai
+24/12/23, 12:10 am - Arnab KIIT: Kotha sunto
+24/12/23, 12:11 am - Abhrajit: Achha
+24/12/23, 12:11 am - Abhrajit: Marks dito
+24/12/23, 12:12 am - Arnab KIIT: Ami toh O peyechilam bhai
+24/12/23, 12:53 am - Abhrajit: Achha
+24/12/23, 11:00 am - Abhrajit: Bhai sap er password change kora jaye ki janis?
+24/12/23, 11:00 am - Arnab KIIT: Na bhai...keno re?
+24/12/23, 11:00 am - Arnab KIIT: Sala Argha o jiges korche
+24/12/23, 11:00 am - Arnab KIIT: Tui o korchis
+24/12/23, 11:00 am - Arnab KIIT: Ki byaper?
+24/12/23, 11:01 am - Abhrajit: Are sala ami thakbona 28th e digha jachhi toh ekjon k acc ta debo
+24/12/23, 11:01 am - Abhrajit: Argha I guess tai korbe😂
+24/12/23, 11:01 am - Arnab KIIT: Haa
+24/12/23, 11:01 am - Arnab KIIT: 😂
+24/12/23, 11:01 am - Abhrajit: Gar mere geche
+24/12/23, 11:01 am - Abhrajit: Aee bokachoda gulo pore korte parto na section select
+24/12/23, 11:02 am - Arnab KIIT: R koto pore korbe bhai
+24/12/23, 11:02 am - Arnab KIIT: College start 4th December theke🙂
+24/12/23, 11:02 am - Abhrajit: Tui kobe firchis?
+24/12/23, 11:03 am - Abhrajit: Tao thik
+24/12/23, 11:03 am - Arnab KIIT: 15
+24/12/23, 11:03 am - Abhrajit: Baah😂
+24/12/23, 11:03 am - Abhrajit: Kau ki tar age firche na
+24/12/23, 11:05 am - Arnab KIIT: Na bhai
+24/12/23, 11:05 am - Arnab KIIT: Ki hobe
+24/12/23, 11:05 am - Arnab KIIT: Age gia
+24/12/23, 11:05 am - Arnab KIIT: Sei toh bara 11 tai ghum theke uthbo
+24/12/23, 11:06 am - Abhrajit: Haan true🔥🔥
+24/12/23, 11:06 am - Abhrajit: Oii sohail khan kmon?
+24/12/23, 11:06 am - Arnab KIIT: Ami toh ai uthlam
+24/12/23, 11:06 am - Arnab KIIT: Akhn o brush korini
+24/12/23, 11:06 am - Abhrajit: 😂😂
+24/12/23, 11:06 am - Arnab KIIT: Valoi bhai
+24/12/23, 11:06 am - Arnab KIIT: Valo marks diache
+24/12/23, 11:06 am - Abhrajit: Hostel habbits
+24/12/23, 11:06 am - Abhrajit: Achha
+24/12/23, 11:06 am - Arnab KIIT: Internal 28 diachilo
+24/12/23, 11:07 am - Abhrajit: Okk
+24/12/23, 11:07 am - Abhrajit: R amar result kobe beorbe?
+24/12/23, 11:07 am - Abhrajit: Amader*
+24/12/23, 11:07 am - Arnab KIIT: Ke jane
+24/12/23, 11:07 am - Abhrajit: Setai
+24/12/23, 11:07 am - Arnab KIIT: Beria jabe dara
+24/12/23, 11:07 am - Abhrajit: Haan
+24/12/23, 11:07 am - Arnab KIIT: Hoitoh college gia
+24/12/23, 11:08 am - Abhrajit: Akhun ki dsa korchis?
+24/12/23, 11:08 am - Arnab KIIT: Haa bhai
+24/12/23, 11:08 am - Arnab KIIT: R ektu
+24/12/23, 11:08 am - Arnab KIIT: Web
+24/12/23, 11:08 am - Abhrajit: Achha
+24/12/23, 11:08 am - Abhrajit: Amio NLP dekhchilam
+24/12/23, 11:08 am - Abhrajit: R ML
+24/12/23, 11:08 am - Abhrajit: Dsa jan ee dekhbo
+24/12/23, 1:35 pm - Arnab KIIT: Accha
+28/12/23, 11:59 am - Arnab KIIT: R masi potao😂
+28/12/23, 11:59 am - Arnab KIIT: Ki nili khanki
+28/12/23, 12:17 pm - Abhrajit: Pisi😂😂
+28/12/23, 12:17 pm - Abhrajit: 11
+28/12/23, 12:17 pm - Abhrajit: Tui?
+28/12/23, 1:57 pm - Arnab KIIT: 28 re
+28/12/23, 3:16 pm - Abhrajit: Achha
+28/12/23, 3:16 pm - Abhrajit: Tor sathe r kau ache?
+28/12/23, 3:41 pm - Arnab KIIT: Haa Trisha elo
+28/12/23, 3:41 pm - Arnab KIIT: Ai half er selection a
+28/12/23, 3:41 pm - Arnab KIIT: R baki apatoto nei keo
+28/12/23, 3:42 pm - Abhrajit: Tor electives ki?
+28/12/23, 3:46 pm - Arnab KIIT: ML NLP
+28/12/23, 4:06 pm - Abhrajit: ML kake nili?
+28/12/23, 5:45 pm - Arnab KIIT: Jayeeta Chakraborty
+28/12/23, 6:24 pm - Abhrajit: Ohh ami sunil kumar
+28/12/23, 7:52 pm - Arnab KIIT: Accha
+29/12/23, 2:49 pm - Abhrajit: internship korchis kichu?
+29/12/23, 11:13 pm - Arnab KIIT: Amake ke debe bhai😔
+30/12/23, 12:53 am - Abhrajit: Bhai tui toh peii jabi
+30/12/23, 10:20 am - Arnab KIIT: 😒
+27/01/24, 3:54 am - Arnab KIIT: Kal tahole bhai ready hoye jas kintu 12:30 a...
+
+Biriyani Bhoj
+27/01/24, 3:57 am - Abhrajit: Okk okk
+27/01/24, 3:57 am - Abhrajit: Ekdom
+01/03/24, 2:06 am - Abhrajit: <Media omitted>
+01/03/24, 2:06 am - Abhrajit: <Media omitted>
+15/03/24, 11:13 am - Arnab KIIT: Bhai 1:30 er dike jabo
+15/03/24, 11:13 am - Arnab KIIT: Kheye nis tui jodi mess a khas
+15/03/24, 11:13 am - Abhrajit: Okk
+20/03/24, 12:18 am - Arnab KIIT: <Media omitted>
+06/04/24, 3:33 pm - Abhrajit: Test kotaye dibi bolis
+10/04/24, 8:43 pm - Abhrajit: <Media omitted>
+12/04/24, 11:48 pm - Arnab KIIT: <Media omitted>
+14/04/24, 7:35 pm - Arnab KIIT: Abhrajit
+
+2 Jim Jam - ₹30
+1 Britannia Fruit Cake - ₹ 24
+1 Britannia Choco Cake - ₹26
+1 Bourbon - ₹80
+
+
+₹190
+14/04/24, 7:35 pm - Arnab KIIT: Side a per piece er dam lekha ache
+14/04/24, 7:36 pm - Abhrajit: Bouborn er 32 ami pathachi r baki sayandip debe
+14/04/24, 7:36 pm - Arnab KIIT: Bhai tui dia de🙂
+14/04/24, 7:36 pm - Arnab KIIT: Or theke tui nia nis
+14/04/24, 7:37 pm - Abhrajit: <Media omitted>
+14/04/24, 7:49 pm - Arnab KIIT: <Media omitted>
+15/04/24, 12:54 pm - Abhrajit: 190 toh?
+15/04/24, 1:24 pm - Arnab KIIT: Haaa re
+15/04/24, 1:46 pm - Arnab KIIT: Thanks You Bhai
+15/04/24, 2:02 pm - Abhrajit: <Media omitted>
+21/04/24, 9:11 pm - Arnab KIIT: Bhai amake ₹125 ta patha na....😗
+21/04/24, 9:11 pm - Abhrajit: Ohh haan bhule gechilam
+21/04/24, 9:12 pm - Arnab KIIT: <Media omitted>
+21/04/24, 9:13 pm - Abhrajit: <Media omitted>
+07/05/24, 11:25 pm - Abhrajit: Ki khobor bara
+07/05/24, 11:26 pm - Abhrajit: Jp morgan er video submission holo?
+07/05/24, 11:27 pm - Arnab KIIT: R a 2 mas por janabe bhai
+07/05/24, 11:27 pm - Arnab KIIT: Ai toh bristi hocche
+07/05/24, 11:28 pm - Arnab KIIT: Tor ki khobor bol
+07/05/24, 11:31 pm - Abhrajit: Hoye jabe chap nei
+07/05/24, 11:31 pm - Abhrajit: Akhuno?
+07/05/24, 11:31 pm - Abhrajit: Ekhane kal hoyechilo
+07/05/24, 11:31 pm - Abhrajit: Cholche
+15/05/24, 10:38 pm - Abhrajit: Oii
+15/05/24, 10:38 pm - Abhrajit: <Media omitted>
+15/05/24, 10:44 pm - Arnab KIIT: Dara
+15/05/24, 10:44 pm - Arnab KIIT: Dicchi
+15/05/24, 10:44 pm - Abhrajit: haan bhai
+15/05/24, 10:45 pm - Arnab KIIT: In the Indian education system of some Indian states, the Pre-University Course (PUC) is referred to as Intermediate or +2 Course, which is an two-year senior secondary education course.
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:45 pm - Arnab KIIT: <Media omitted>
+15/05/24, 10:48 pm - Arnab KIIT: Eta likhechi
+15/05/24, 10:51 pm - Abhrajit: Eta sure?
+15/05/24, 10:52 pm - Abhrajit: R grade ki dichhis?
+15/05/24, 11:03 pm - Arnab KIIT: Pdf gulo dekh
+15/05/24, 11:04 pm - Arnab KIIT: Sob dia diachi
+15/05/24, 11:04 pm - Arnab KIIT: Abe ota ekta likhlei holo
+15/05/24, 11:04 pm - Abhrajit: Icse r isc?
+15/05/24, 11:04 pm - Abhrajit: <Media omitted>
+15/05/24, 11:04 pm - Arnab KIIT: 10 er por
+15/05/24, 11:05 pm - Abhrajit: Mane 12 er ta debo?
+15/05/24, 11:05 pm - Arnab KIIT: Eta ami google search kore peyechi
+15/05/24, 11:05 pm - Arnab KIIT: Haa grade ta 12 er de
+15/05/24, 11:06 pm - Abhrajit: Ok bhai
+15/05/24, 11:08 pm - Abhrajit: Ok
+16/05/24, 8:05 pm - Abhrajit: bhai stackflow userid kotha theke pachis?
+16/05/24, 9:23 pm - Arnab KIIT: Oder website a account banate hobe
+18/05/24, 2:34 pm - Abhrajit: Oii
+18/05/24, 2:34 pm - Abhrajit: Eta bol junglee taye ctc koto?
+18/05/24, 2:38 pm - Arnab KIIT: Anek
+18/05/24, 2:39 pm - Arnab KIIT: 1st year 16.40 pabi
+18/05/24, 2:39 pm - Arnab KIIT: 2nd Year 17.40
+18/05/24, 2:39 pm - Arnab KIIT: 3rd Year 18.40
+18/05/24, 2:39 pm - Abhrajit: Ekta dekh lekha 3 years: 21lpa?
+18/05/24, 2:39 pm - Abhrajit: Eta mane ki per year 7lpa?
+18/05/24, 2:39 pm - Arnab KIIT: Na bhai🙂
+18/05/24, 2:40 pm - Arnab KIIT: Anek company
+18/05/24, 2:40 pm - Arnab KIIT: Stock dei
+18/05/24, 2:40 pm - Arnab KIIT: Ora 4 bochor er stock
+18/05/24, 2:40 pm - Arnab KIIT: 1 bochor a likhe dei
+18/05/24, 2:40 pm - Arnab KIIT: Dia CTC ta baria dei
+18/05/24, 2:40 pm - Abhrajit: Achha
+18/05/24, 2:40 pm - Arnab KIIT: Toh seivabe dekhte gele eder o CTC 21.40 LPA
+18/05/24, 2:40 pm - Arnab KIIT: Kintu era je 16.40 likhche
+18/05/24, 2:40 pm - Arnab KIIT: Eta puro
+18/05/24, 2:40 pm - Arnab KIIT: Solid
+18/05/24, 2:41 pm - Abhrajit: Uff uff
+18/05/24, 2:41 pm - Arnab KIIT: Ete kono bal kirtan nei
+18/05/24, 2:41 pm - Abhrajit: Apply korbi?
+18/05/24, 2:41 pm - Arnab KIIT: Haa kore debo
+18/05/24, 2:41 pm - Abhrajit: Okk
+18/05/24, 2:41 pm - Abhrajit: Then korei debo
+18/05/24, 2:41 pm - Abhrajit: Exam ta di
+18/05/24, 2:41 pm - Arnab KIIT: Haaa
+18/05/24, 2:41 pm - Arnab KIIT: Tarpor dekha jabe
+18/05/24, 2:41 pm - Arnab KIIT: Ja hobe
+18/05/24, 2:41 pm - Abhrajit: Haan setai bepar
+18/05/24, 7:40 pm - Abhrajit: Code er ans peli?
+20/05/24, 1:43 am - Abhrajit: Oii tui ki resume te photo diyechis superset e?
+20/05/24, 10:03 am - Arnab KIIT: Na bhai
+20/05/24, 11:34 am - Abhrajit: Okk
+20/05/24, 6:31 pm - Abhrajit: Mock eseche?
+20/05/24, 11:00 pm - Arnab KIIT: Na re aseni
+21/05/24, 12:11 am - Abhrajit: Ohh
+21/05/24, 10:34 pm - Abhrajit: Aj GD attend korechilism
+21/05/24, 10:34 pm - Abhrajit: ?
+21/05/24, 10:51 pm - Arnab KIIT: Bara amar aseni be
+21/05/24, 10:51 pm - Abhrajit: Tor name list e chilo
+21/05/24, 10:51 pm - Arnab KIIT: Ki bolis
+21/05/24, 10:51 pm - Arnab KIIT: Bara
+21/05/24, 10:51 pm - Arnab KIIT: Mail deini toh
+21/05/24, 10:51 pm - Arnab KIIT: 🙂
+21/05/24, 10:53 pm - Abhrajit: Ohh jnina then
+21/05/24, 10:53 pm - Arnab KIIT: List ta
+21/05/24, 10:53 pm - Arnab KIIT: Dekhate parbi??
+21/05/24, 10:53 pm - Arnab KIIT: Dekha na
+23/05/24, 9:17 am - Abhrajit: Tor exam link eseche?
+23/05/24, 10:02 am - Arnab KIIT: Na re aseni akhn o
+23/05/24, 10:02 am - Arnab KIIT: Aajke hobe kina setai vabchi
+23/05/24, 10:02 am - Abhrajit: Setai bara
+23/05/24, 11:02 am - Abhrajit: Kiit er mail dichhis login ee?
+23/05/24, 11:08 am - Arnab KIIT: Haaaaa
+23/05/24, 11:43 am - Abhrajit: Knapsack hoyechr?
+23/05/24, 11:51 am - Arnab KIIT: Question alada
+23/05/24, 1:20 pm - Abhrajit: Kmon gelo?
+23/05/24, 1:25 pm - Arnab KIIT: 1 ta code holo
+23/05/24, 1:25 pm - Arnab KIIT: Tor kota holo?
+23/05/24, 1:25 pm - Arnab KIIT: Bara ki gar fatano bhai
+23/05/24, 1:26 pm - Abhrajit: amaro ekta code hoyeche r ekta 3 te test case run korche
+23/05/24, 1:26 pm - Abhrajit: seii bhai
+23/05/24, 1:26 pm - Arnab KIIT: Morgan Stanley er theke easy chilo
+23/05/24, 1:26 pm - Abhrajit: 😂😂 oitai
+23/05/24, 1:26 pm - Abhrajit: oneke exam hi start koreni😂
