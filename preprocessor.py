@@ -4,7 +4,7 @@ import pandas as pd
 
 def preprocess(data):
 
-    pattern = '\d{2}/\d{2}/\d{2},\s\d{2}:\d{2}\s-\s'
+    pattern = r'\d{2}/\d{2}/\d{2},\s\d{2}:\d{2}\s-\s'
 
     messages = re.split(pattern, data)[1:]
     dates = re.findall(pattern, data)
@@ -19,7 +19,7 @@ def preprocess(data):
     users = []
     messages = []
     for message in df['user_message']:
-        entry = re.split('([\w\W]+?):\s', message)
+        entry = re.split(r'([\w\W]+?):\s', message)
         if entry[1:]:  # user name
             users.append(entry[1])
             messages.append(" ".join(entry[2:]))

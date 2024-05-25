@@ -6,9 +6,32 @@ import seaborn as sns
 import warnings
 import logging
 
-st.sidebar.title("Whatsapp Chat Analyzer")
+st.markdown(
+    """
+    <style>
+    .centered-header {
+        text-align: center;
+        font-size: 2em;
+        # color: grey;
+        border-bottom: 2px 0px 30px 0px solid transparent;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+    .centered-header:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-uploaded_file = st.sidebar.file_uploader("Choose a file")
+st.markdown('<h1 class="centered-header">Whatsapp Chatscribe</h1>', unsafe_allow_html=True)
+
+uploaded_file = st.file_uploader("Choose a file-Upload in 24-hour format")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     data = bytes_data.decode("utf-8")
@@ -21,6 +44,7 @@ if uploaded_file is not None:
     user_list.insert(0, "Overall")
 
     selected_user = st.sidebar.selectbox("Show analysis wrt", user_list)
+
 
     if st.sidebar.button("Show Analysis"):
 
@@ -132,4 +156,8 @@ if uploaded_file is not None:
             ax.pie(emoji_df[1].head(),
                    labels=emoji_df[0].head(), autopct="%0.2f")
             st.pyplot(fig)
+
+st.sidebar.link_button("Github", "https://github.com/Abhrajitdas02")
+st.sidebar.link_button("Linkdln", "https://www.linkedin.com/in/abhrajit-das-53a958231")
+st.sidebar.link_button("Instagram", "https://www.instagram.com/abhrajit_das_123/")
             
