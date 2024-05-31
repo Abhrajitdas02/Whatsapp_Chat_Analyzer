@@ -29,6 +29,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.sidebar.link_button("Github", "https://github.com/Abhrajitdas02")
+st.sidebar.link_button("Linkedin", "https://www.linkedin.com/in/abhrajit-das-53a958231")
+st.sidebar.link_button("Instagram", "https://www.instagram.com/abhrajit_das_123/")
 st.markdown('<h1 class="centered-header">Whatsapp Chatscribe</h1>', unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("Choose a file-Upload in 24-hour format")
@@ -157,7 +160,5 @@ if uploaded_file is not None:
                    labels=emoji_df[0].head(), autopct="%0.2f")
             st.pyplot(fig)
 
-st.sidebar.link_button("Github", "https://github.com/Abhrajitdas02")
-st.sidebar.link_button("Linkdln", "https://www.linkedin.com/in/abhrajit-das-53a958231")
-st.sidebar.link_button("Instagram", "https://www.instagram.com/abhrajit_das_123/")
+
             
