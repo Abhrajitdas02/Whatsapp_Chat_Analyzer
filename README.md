@@ -1,4 +1,4 @@
-<h1 align="center">Chat Analyser</h1>
+<h1 align="center">ChatScribe</h1>
 <h5 align="center">"An simple  web application that can analyse and provide useful information about whatapp chats"</h5>
 
 <hr>
@@ -82,5 +82,5 @@ in root directory
 
 Check it out on Streamlit --> https://chatnexus.streamlit.app/
 
-Check it out on Render --> https://chat-analyser-g0pl.onrender.com
+Check it out on Render --> https://chatscribe.onrender.com
 
