@@ -80,7 +80,7 @@ in root directory
 
 ## Live 
 
-Check it out on Streamlit --> https://chatnexus.streamlit.app/
+Check it out on Streamlit --> https://chatscribe.streamlit.app
 
 Check it out on Render --> https://chatscribe.onrender.com
 
