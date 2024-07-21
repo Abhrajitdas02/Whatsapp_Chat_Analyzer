@@ -20,8 +20,6 @@ This streamlit based application allows users to check the contents of informati
 
 ## Project Contributors
 
-- [Sayantan Sen](https://github.com/Sayantan-Sen-2003)
-
 - [Abhrajit Das](https://github.com/Abhrajitdas02)
  
 
